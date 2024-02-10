@@ -45,7 +45,7 @@ $(OBJECT_PATH):
 	mkdir -p $@
 
 $(LIBASM):
-	make -C $(LIBASM_PATH) DEBUG=1
+	make -C $(LIBASM_PATH)
 
 clean:
 	$(REMOVE) $(OBJECT_PATH)
