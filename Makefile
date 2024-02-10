@@ -1,24 +1,24 @@
-NAME			:= libasm.a
+NAME := libasm.a
 
-AS				:= nasm
-ASFLAGS			:= -f elf64
-AR				:= ar
-ARFLAGS			:= rcs
-REMOVE			:= rm -rf
+AS := nasm
+ASFLAGS := -f elf64
+AR := ar
+ARFLAGS := rcs
+REMOVE := rm -rf
 
-HEADER_PATH		:= ./includes
-HEADER_FILES	:= $(wildcard $(HEADER_PATH)/*.h)
+HEADER_PATH := ./includes
+HEADER_FILES := $(wildcard $(HEADER_PATH)/*.h)
 
-SOURCE_PATH		:= ./sources
-SOURCE_FILES	:= $(wildcard $(SOURCE_PATH)/*.s)
+SOURCE_PATH := ./sources
+SOURCE_FILES := $(wildcard $(SOURCE_PATH)/*.s)
 
-OBJECT_PATH		:= ./objects
-OBJECT_FILES	:= $(patsubst $(SOURCE_PATH)/%.s,$(OBJECT_PATH)/%.o,$(SOURCE_FILES))
+OBJECT_PATH := ./objects
+OBJECT_FILES := $(patsubst $(SOURCE_PATH)/%.s,$(OBJECT_PATH)/%.o,$(SOURCE_FILES))
 
-TEST_PATH		:= tests
+TEST_PATH := tests
 
-vpath			%.s $(SOURCE_PATH)
-vpath			%.h $(HEADER_PATH)
+vpath %.s $(SOURCE_PATH)
+vpath %.h $(HEADER_PATH)
 
 all: $(NAME)
 
