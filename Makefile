@@ -22,7 +22,7 @@ vpath %.h $(HEADER_PATH)
 
 all: $(NAME)
 
-$(OBJECT_PATH)/%.o: %.s Makefile | $(OBJECT_PATH)
+$(OBJECT_PATH)/%.o: %.s $(HEADER_FILES) Makefile | $(OBJECT_PATH)
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(NAME): $(OBJECT_FILES)
