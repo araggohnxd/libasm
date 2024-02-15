@@ -17,6 +17,57 @@ global ft_strlen2
 ; Both implementations assume that RDI points to the first byte of the string
 ; to be analyzed.
 
+; Explicit loop construct
+; -----------------------
+; xor rax, rax
+;   Sets the RAX register to 0, by XORing it to itself. This is the standard
+;   register for returning values from functions in NASM x64, and therefore
+;   the register used for storing the length counter.
+;
+; __loop
+; ------
+; cmp [rdi], byte 0
+;   Compares the byte at the memory location pointed to by RDI with a 0 byte,
+;   the null terminator. If the comparison evaluates to true, the Zero Flag (ZF)
+;   is set.
+;
+; jz __end
+;   Jumps to the `__end` label if the ZF is set, which indicates that the null
+;   terminator has been found.
+;
+; inc rax
+;   Increments the value in RAX by 1, effectively counting the number of
+;   characters already processed in the string.
+;
+; inc rdi
+;   Increments the value in RDI by 1, moving the pointer to the next character
+;   of the string.
+;
+; jmp __loop
+;   Jumps back to the beggining of the `__loop` label to continue processing the
+;   string.
+;
+; __end
+; -----
+; ret
+;   Returns from the function. At this point, RAX contains the length of the
+;   string.
+
+ft_strlen:
+    xor rax, rax
+
+__loop:
+    cmp [rdi], byte 0
+    jz __end
+
+    inc rax
+    inc rdi
+    jmp __loop
+
+__end:
+    ret
+
+
 ; Specialized string instructions
 ; -------------------------------
 ; mov rcx, -1
@@ -63,61 +114,11 @@ global ft_strlen2
 ; ret
 ;   Returns from the function.
 
-ft_strlen:
+ft_strlen2:
     mov rcx, -1
     xor al, al
     repne scasb
     not rcx
     dec rcx
     mov rax, rcx
-    ret
-
-; Explicit loop construct
-; -----------------------
-; xor rax, rax
-;   Sets the RAX register to 0, by XORing it to itself. This is the standard
-;   register for returning values from functions in NASM x64, and therefore
-;   the register used for storing the length counter.
-;
-; __loop
-; ------
-; cmp [rdi], byte 0
-;   Compares the byte at the memory location pointed to by RDI with a 0 byte,
-;   the null terminator. If the comparison evaluates to true, the Zero Flag (ZF)
-;   is set.
-;
-; jz __end
-;   Jumps to the `__end` label if the ZF is set, which indicates that the null
-;   terminator has been found.
-;
-; inc rax
-;   Increments the value in RAX by 1, effectively counting the number of
-;   characters already processed in the string.
-;
-; inc rdi
-;   Increments the value in RDI by 1, moving the pointer to the next character
-;   of the string.
-;
-; jmp __loop
-;   Jumps back to the beggining of the `__loop` label to continue processing the
-;   string.
-;
-; __end
-; -----
-; ret
-;   Returns from the function. At this point, RAX contains the length of the
-;   string.
-
-ft_strlen2:
-    xor rax, rax
-
-__loop:
-    cmp [rdi], byte 0
-    jz __end
-
-    inc rax
-    inc rdi
-    jmp __loop
-
-__end:
     ret
