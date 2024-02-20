@@ -1,7 +1,7 @@
 NAME := libasm.a
 
 AS := nasm
-ASFLAGS := -f elf64
+ASFLAGS := -f elf64 -g
 AR := ar
 ARFLAGS := rcs
 REMOVE := rm -rf
