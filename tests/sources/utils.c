@@ -1,35 +1,30 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 19:30:04 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/23 19:00:40 by maolivei         ###   ########.fr       */
+/*   Created: 2024/02/23 18:51:52 by maolivei          #+#    #+#             */
+/*   Updated: 2024/02/23 18:55:56 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "tests.h"
 
-void setUp(void) {
-  // set stuff up here
-}
+char *read_whole_file(const char *fname) {
+  FILE *f;
+  long fsize;
+  char *str;
 
-void tearDown(void) {
-  // clean stuff up here
-}
+  f = fopen(fname, "rb");
+  fseek(f, 0, SEEK_END);
+  fsize = ftell(f);
+  fseek(f, 0, SEEK_SET);
+  str = malloc(fsize + 1);
+  fread(str, fsize, 1, f);
+  str[fsize] = 0;
+  fclose(f);
 
-int main(void) {
-  UNITY_BEGIN();
-
-  test_ft_strlen();
-  test_ft_strlen2();
-  test_ft_strcpy();
-  test_ft_strcpy2();
-  test_ft_strcmp();
-  test_ft_strcmp2();
-  test_ft_write();
-
-  return (UNITY_END());
+  return (str);
 }

@@ -22,7 +22,7 @@ IFLAGS += -I $(UNITY_PATH)
 IFLAGS += -I $(LIBASM_PATH)/includes
 LDFLAGS := -L $(LIBASM_PATH) -lasm
 VALGRIND := valgrind
-VGFLAGS := --leak-check=full --show-leak-kinds=all
+VGFLAGS := --leak-check=full --show-leak-kinds=all --track-fds=yes
 REMOVE := rm -rf
 
 vpath %.c $(SOURCE_PATH)
@@ -30,12 +30,13 @@ vpath %.h $(HEADER_PATH)
 
 all: test
 
-test: $(LIBASM) $(OBJECT_FILES)
-	$(CC) $(CFLAGS) $(OBJECT_FILES) $(LDFLAGS)
+$(TARGET): $(LIBASM) $(OBJECT_FILES)
+	$(CC) $(CFLAGS) -o $@ $(OBJECT_FILES) $(LDFLAGS)
+
+test: $(TARGET)
 	./$(TARGET)
 
-vg: $(LIBASM) $(OBJECT_FILES)
-	$(CC) $(CFLAGS) $(OBJECT_FILES) $(LDFLAGS)
+vg:	$(TARGET)
 	$(VALGRIND) $(VGFLAGS) ./$(TARGET)
 
 $(OBJECT_PATH)/%.o: %.c $(HEADER_FILES) Makefile | $(OBJECT_PATH)
