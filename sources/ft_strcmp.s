@@ -12,6 +12,8 @@
 
 section .text
 global ft_strcmp
+global ft_strcmp2
+extern ft_strlen
 
 ft_strcmp:
     xor rcx, rcx
@@ -21,22 +23,45 @@ __loop:
     mov dl, [rsi + rcx]
     inc rcx
     cmp dl, 0
-    je __end0
+    je __eq
     cmp dl, dh
     je __loop
-    jl __end1
-    jg __end2
+    jb __lt
+    ja __gt
 
-__end0:
+__eq:
     cmp dh, 0
-    jne __end1
+    jne __lt
     xor rax, rax
     ret
 
-__end1:
+__lt:
     mov rax, 1
     ret
 
-__end2:
+__gt:
+    mov rax, -1
+    ret
+
+ft_strcmp2:
+    push rdi
+    call ft_strlen
+    pop rdi
+    mov rcx, rax
+    inc rcx
+    repe cmpsb
+    jb __lt2
+    ja __gt2
+    je __eq2
+
+__eq2:
+    xor rax, rax
+    ret
+
+__lt2:
+    mov rax, 1
+    ret
+
+__gt2:
     mov rax, -1
     ret

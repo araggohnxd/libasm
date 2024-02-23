@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:30:04 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/19 15:45:55 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:00:27 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,6 +28,7 @@ int main(void) {
   test_ft_strcpy();
   test_ft_strcpy2();
   test_ft_strcmp();
+  test_ft_strcmp2();
 
   return (UNITY_END());
 }
