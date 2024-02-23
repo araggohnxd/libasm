@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "*.log": "plaintext",
-    "*.tpp": "cpp",
-    "tests.h": "c",
-    "libasm.h": "c",
-    "string.h": "c"
-  }
-}
