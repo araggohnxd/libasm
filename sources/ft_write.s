@@ -38,10 +38,10 @@ extern __errno_location
 ;   Negate RAX. The error code will be negative, for example, -9 for EBADF. In
 ;   order to have the correct ERRNO value, RAX is negated.
 ;
-; push rax
-;   Pushes the value in RAX onto the stack, preserving it for future usage. This
-;   step is necessary as `__errno_location` function will be called on the next
-;   instruction, effectively overwriting the ERRNO code we need to set.
+; mov rdx, rax
+;   Moves RAX value into RDX to save it for future usage. This step is necessary
+;   as `__errno_location` function will be called on the next instruction,
+;   effectively overwriting the ERRNO code we need to set.
 ;
 ; call __errno_location wrt ..plt
 ;   Get the ERRNO variable. WRT ..PLT stands for "with respect to Procedure
@@ -50,11 +50,6 @@ extern __errno_location
 ;   functions from shared libraries. The PLT ensures that the correct address
 ;   of the function is resolved at runtime. Since is part of the C library, its
 ;   address might need to be resolved dynamically.
-;
-; pop rdx
-;   Loads the value from the top of the stack to the RDX register. In this case,
-;   the only pushed value is the SYS_WRITE return that was pushed from RAX, so
-;   we retrieve it to set the ERRNO variable.
 ;
 ; mov [rax], rdx
 ;   Moves the value in RDX to the memory pointed to by RAX, which at this point
