@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:25:51 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/23 16:51:27 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:50:10 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -22,5 +22,6 @@ char *ft_strcpy2(char *restrict dst, const char *restrict src);
 int ft_strcmp(const char *s1, const char *s2);
 int ft_strcmp2(const char *s1, const char *s2);
 ssize_t ft_write(int fd, const void *buf, size_t count);
+ssize_t ft_read(int fd, void *buf, size_t count);
 
 #endif /* LIBASM_H */
