@@ -75,9 +75,8 @@ ft_write:
 
 __error:
     neg rax
-    push rax
+    mov rdx, rax
     call __errno_location wrt ..plt
-    pop rdx
     mov [rax], rdx
     mov rax, -1
     ret
