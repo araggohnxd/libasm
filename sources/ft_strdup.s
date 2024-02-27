@@ -24,16 +24,11 @@ ft_strdup:
     mov rdi, rax
     call malloc wrt ..plt
     cmp rax, 0
-    je __error
+    je __end
     mov rdi, rax
     pop rsi
     call ft_strcpy
     ret
 
-__error:
-    neg rax
-    mov rdx, rax
-    call __errno_location wrt ..plt
-    mov [rax], rdx
-    mov rax, 0
+__end:
     ret
