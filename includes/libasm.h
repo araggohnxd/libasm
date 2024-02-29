@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:25:51 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/28 21:28:38 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:34:42 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,5 +31,6 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 char *ft_strdup(const char *s);
 
 void ft_list_push_front(t_list **begin_list, void *data);
+int ft_list_size(t_list *begin_list);
 
 #endif /* LIBASM_H */

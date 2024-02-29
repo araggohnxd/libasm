@@ -6,21 +6,21 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:33:30 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/28 22:02:36 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:40:31 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #ifndef TESTS_H
 #define TESTS_H
 
-#include <string.h>
-#include <unistd.h>
+#include "libasm.h"
+#include "unity.h"
+#include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
-#include "libasm.h"
-#include "unity.h"
+#include <string.h>
+#include <unistd.h>
 
 #define SYS_WRITE_OUT "sys_write.output"
 #define FT_WRITE_OUT "ft_write.output"
@@ -37,6 +37,7 @@ void test_ft_read(void);
 void test_ft_strdup(void);
 
 void test_ft_list_push_front(void);
+void test_ft_list_size(void);
 
 char *read_whole_file(const char *filename);
 
