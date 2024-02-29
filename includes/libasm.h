@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:25:51 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/27 17:02:44 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:28:38 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,6 +14,11 @@
 #define LIBASM_H
 
 #include <sys/types.h>
+
+typedef struct s_list {
+  void *data;
+  struct s_list *next;
+} t_list;
 
 size_t ft_strlen(const char *s);
 size_t ft_strlen2(const char *s);
@@ -24,5 +29,7 @@ int ft_strcmp2(const char *s1, const char *s2);
 ssize_t ft_write(int fd, const void *buf, size_t count);
 ssize_t ft_read(int fd, void *buf, size_t count);
 char *ft_strdup(const char *s);
+
+void ft_list_push_front(t_list **begin_list, void *data);
 
 #endif /* LIBASM_H */

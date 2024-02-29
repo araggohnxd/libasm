@@ -22,6 +22,8 @@ vpath %.h $(HEADER_PATH)
 
 all: $(NAME)
 
+bonus: all
+
 $(OBJECT_PATH)/%.o: %.s $(HEADER_FILES) Makefile | $(OBJECT_PATH)
 	$(AS) $(ASFLAGS) -o $@ $<
 
