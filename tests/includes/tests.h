@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:33:30 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/29 16:40:31 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:10:30 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -38,6 +38,7 @@ void test_ft_strdup(void);
 
 void test_ft_list_push_front(void);
 void test_ft_list_size(void);
+void test_ft_list_remove_if(void);
 
 char *read_whole_file(const char *filename);
 

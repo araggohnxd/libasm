@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 19:25:51 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/29 16:34:42 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:10:26 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -32,5 +32,6 @@ char *ft_strdup(const char *s);
 
 void ft_list_push_front(t_list **begin_list, void *data);
 int ft_list_size(t_list *begin_list);
+void ft_list_remove_if(t_list **, void *, int (*)(), void (*)(void *));
 
 #endif /* LIBASM_H */
