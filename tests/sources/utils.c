@@ -6,7 +6,7 @@
 /*   By: maolivei <maolivei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:51:52 by maolivei          #+#    #+#             */
-/*   Updated: 2024/02/23 18:55:56 by maolivei         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:14:53 by maolivei         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -27,4 +27,28 @@ char *read_whole_file(const char *fname) {
   fclose(f);
 
   return (str);
+}
+
+int *intdup(int value) {
+  int *ptr = malloc(sizeof(int));
+
+  if (!ptr)
+    return (NULL);
+
+  *ptr = value;
+  return (ptr);
+}
+
+int intcmp(int *a, int *b) { return (*a - *b); }
+
+void ft_list_clear(t_list *head, void (*free_fct)(void *)) {
+  t_list *tmp;
+
+  while (head) {
+    tmp = head;
+    head = head->next;
+    if (free_fct)
+      free_fct(tmp->data);
+    free(tmp);
+  }
 }
